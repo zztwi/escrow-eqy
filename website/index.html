@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="eqy is a premium Discord PayPal escrow bot for safer buyer and seller trades."
+    />
+    <meta property="og:title" content="eqy | PayPal Escrow Bot" />
+    <meta
+      property="og:description"
+      content="Private escrow tickets, PayPal proof handling, disputes, refunds, reviews, staff logs, and transcripts."
+    />
+    <meta property="og:image" content="assets/eqy-hero.png" />
+    <title>eqy | PayPal Escrow Bot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" href="assets/eqy-hero.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vault-lines" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <nav class="nav-wrap" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="eqy home">
+          <span class="brand-mark">eq</span>
+          <span>eqy</span>
+        </a>
+        <div class="nav-links">
+          <a href="#workflow">Workflow</a>
+          <a href="#features">Features</a>
+          <a href="#security">Security</a>
+          <a href="#commands">Commands</a>
+          <a href="#partners">Partners</a>
+        </div>
+        <a class="nav-cta" href="https://discord.gg/ezhweJxe3q">Open Discord</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy-block">
+            <p class="eyebrow">escrow for paypal · discord</p>
+            <h1>Funds stay in custody until delivery is confirmed.</h1>
+            <p class="lead">
+              eqy opens a private ticket for every trade, keeps PayPal proof tied
+              to the ticket ID, and gives staff a clean path to confirm, release,
+              refund, or dispute with evidence.
+            </p>
+            <div class="hero-actions">
+              <a class="btn-primary" href="https://discord.gg/ezhweJxe3q">Open Discord -></a>
+              <a class="btn-ghost" href="#commands">View commands</a>
+            </div>
+            <div class="hero-stats" aria-label="eqy highlights">
+              <div><b>8%</b><span>service fee</span></div>
+              <div><b>7</b><span>ticket states</span></div>
+              <div><b>1:1</b><span>private trade ticket</span></div>
+            </div>
+          </div>
+
+          <div class="ticket-stage">
+            <img class="stage-image" src="assets/eqy-hero.png" alt="" />
+            <div class="ticket-card" id="ticketCard">
+              <div class="ticket-top">
+                <div>
+                  <div class="ticket-id">TICKET #0427</div>
+                  <div class="ticket-fee">8% service fee included</div>
+                </div>
+                <div class="ticket-badge" id="badge">pending</div>
+              </div>
+
+              <div class="ticket-amount">240.00 EUR</div>
+
+              <div class="ticket-parties">
+                <div><span>seller</span>nyx.codes</div>
+                <div class="ticket-arrow">-></div>
+                <div><span>buyer</span>ravvn_</div>
+              </div>
+
+              <div class="ticket-track">
+                <div class="track-line"><div class="track-fill" id="trackFill"></div></div>
+                <div class="track-labels" id="trackLabels">
+                  <span>open</span>
+                  <span>deposit</span>
+                  <span>funded</span>
+                  <span>delivery</span>
+                  <span>released</span>
+                </div>
+              </div>
+
+              <div class="ticket-footer">
+                <span>PayPal proof required</span>
+                <span>Transcript on close</span>
+              </div>
+
+              <div class="ticket-seal" id="ticketSeal">PAYMENT<br />RELEASED</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Trust highlights">
+        <div class="wrap trust-row">
+          <div class="trust-item"><b>Manual verification</b><span>for every deposit</span></div>
+          <div class="trust-item"><b>Separated logs</b><span>for each escrow phase</span></div>
+          <div class="trust-item"><b>Blacklist tools</b><span>for risky users</span></div>
+          <div class="trust-item"><b>Transcripts</b><span>sent after close</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="workflow">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">ticket lifecycle</p>
+            <h2>Every trade follows the same visible path.</h2>
+            <p>
+              Buyer, seller, staff, deposit proof, delivery proof, disputes, and
+              payout confirmations stay attached to one ticket ID.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <article class="tl-item">
+              <div class="tl-line-fill" aria-hidden="true"></div>
+              <span class="tl-num">01</span>
+              <div class="tl-dot dot-muted"></div>
+              <h3>Ticket opened</h3>
+              <p>Staff or users start an escrow with buyer, seller, amount, fee, and trade description.</p>
+              <span class="tl-status status-muted">pending</span>
+            </article>
+            <article class="tl-item">
+              <div class="tl-line-fill" aria-hidden="true"></div>
+              <span class="tl-num">02</span>
+              <div class="tl-dot dot-blue"></div>
+              <h3>Deposit submitted</h3>
+              <p>The buyer submits PayPal proof. eqy forwards it to the proof channel with ticket details.</p>
+              <span class="tl-status status-blue">deposit submitted</span>
+            </article>
+            <article class="tl-item">
+              <div class="tl-line-fill" aria-hidden="true"></div>
+              <span class="tl-num">03</span>
+              <div class="tl-dot dot-green-soft"></div>
+              <h3>Funds confirmed</h3>
+              <p>Staff checks the PayPal vault and confirms the deposit before delivery continues.</p>
+              <span class="tl-status status-green-soft">funded</span>
+            </article>
+            <article class="tl-item">
+              <div class="tl-line-fill" aria-hidden="true"></div>
+              <span class="tl-num">04</span>
+              <div class="tl-dot dot-green"></div>
+              <h3>Delivery and proof</h3>
+              <p>The seller delivers inside the ticket. Users can attach payment, chat, identity, or delivery proof.</p>
+              <span class="tl-status status-green">in progress</span>
+            </article>
+            <article class="tl-item">
+              <div class="tl-line-fill" aria-hidden="true"></div>
+              <span class="tl-num">05</span>
+              <div class="tl-dot dot-brass"></div>
+              <h3>Release requested</h3>
+              <p>The buyer releases the trade when delivery is complete, or opens a dispute if something is wrong.</p>
+              <span class="tl-status status-brass">release</span>
+            </article>
+            <article class="tl-item">
+              <div class="tl-line-fill" aria-hidden="true"></div>
+              <span class="tl-num">06</span>
+              <div class="tl-dot dot-brass"></div>
+              <h3>Payout confirmed</h3>
+              <p>Staff confirms the PayPal payout ID, closes the ticket, and sends transcripts to both sides.</p>
+              <span class="tl-status status-brass">released</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tight" id="features">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">included system</p>
+            <h2>Everything a serious trade server needs.</h2>
+          </div>
+
+          <div class="feat-grid">
+            <article class="feat"><div class="ico">01</div><h3>Private escrow tickets</h3><p>Each trade gets a controlled channel with buyer, seller, staff, rules, and ticket ID.</p></article>
+            <article class="feat"><div class="ico">02</div><h3>Proof handling</h3><p>Payment, delivery, chat, identity, and other proofs are collected and logged cleanly.</p></article>
+            <article class="feat"><div class="ico">03</div><h3>Disputes and reports</h3><p>Dedicated tickets for scam reports, disputes, refunds, and staff-only investigation notes.</p></article>
+            <article class="feat"><div class="ico">04</div><h3>Reviews</h3><p>Users can leave a rating and message after a completed trade to build reputation.</p></article>
+            <article class="feat"><div class="ico">05</div><h3>Blacklist checks</h3><p>Staff can block risky users and review their trade history before another ticket opens.</p></article>
+            <article class="feat"><div class="ico">06</div><h3>Partner workflow</h3><p>A clean partnership panel lets communities apply without mixing support and escrow tickets.</p></article>
+            <article class="feat"><div class="ico">07</div><h3>Captcha verification</h3><p>Manual word captcha assigns a member role and keeps basic spam away from trade channels.</p></article>
+            <article class="feat"><div class="ico">08</div><h3>Audit transcripts</h3><p>On close, transcripts are archived and sent to both buyer and seller for support evidence.</p></article>
+            <article class="feat"><div class="ico">09</div><h3>Staff logs</h3><p>Open, close, deposit, confirm, release, dispute, refund, and proof events stay separated.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="security">
+        <div class="wrap">
+          <div class="fee-panel">
+            <div>
+              <p class="eyebrow">transparent fee</p>
+              <div class="fee-big">8%</div>
+              <p>
+                One service fee, shown before the trade continues. No hidden
+                charge, no time-based fee, no investment of held funds.
+              </p>
+            </div>
+            <ul class="fee-list">
+              <li>PayPal deposits are checked manually by staff before delivery continues.</li>
+              <li>The seller is paid only after buyer release or staff resolution.</li>
+              <li>Disputes freeze the ticket until a human moderator reviews the evidence.</li>
+              <li>Proof, logs, and transcripts reduce confusion when support is needed later.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tight" id="commands">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">reference</p>
+            <h2>Commands and user actions.</h2>
+          </div>
+
+          <div class="terminal">
+            <div class="term-top">
+              <div class="term-dots"><span></span><span></span><span></span></div>
+              <div class="term-tabs">
+                <button class="term-tab active" data-tab="slash">slash</button>
+                <button class="term-tab" data-tab="buttons">buttons</button>
+                <button class="term-tab" data-tab="staff">staff</button>
+              </div>
+            </div>
+            <div class="term-body">
+              <div class="term-pane active" data-pane="slash">
+                <div class="cmd-row"><span class="cmd-name">/escrow start <em>seller buyer amount desc</em></span><span class="cmd-desc">creates the private escrow ticket</span></div>
+                <div class="cmd-row"><span class="cmd-name">/verify</span><span class="cmd-desc">posts the captcha verification panel</span></div>
+                <div class="cmd-row"><span class="cmd-name">/panel</span><span class="cmd-desc">posts the public report panel</span></div>
+                <div class="cmd-row"><span class="cmd-name">/partnerpanel</span><span class="cmd-desc">posts the partnership ticket panel</span></div>
+                <div class="cmd-row"><span class="cmd-name">/rules</span><span class="cmd-desc">publishes server and bot rules</span></div>
+              </div>
+              <div class="term-pane" data-pane="buttons">
+                <div class="cmd-row"><span class="cmd-name">Submit deposit</span><span class="cmd-desc">buyer submits PayPal reference and details</span></div>
+                <div class="cmd-row"><span class="cmd-name">Add proof</span><span class="cmd-desc">user uploads a screenshot or proof file</span></div>
+                <div class="cmd-row"><span class="cmd-name">Release</span><span class="cmd-desc">buyer authorizes staff to proceed with payout</span></div>
+                <div class="cmd-row"><span class="cmd-name">Dispute</span><span class="cmd-desc">opens a staff dispute ticket with reason</span></div>
+                <div class="cmd-row"><span class="cmd-name">Review</span><span class="cmd-desc">sends rating and feedback to the review channel</span></div>
+                <div class="cmd-row"><span class="cmd-name">Refund</span><span class="cmd-desc">starts a refund review request</span></div>
+              </div>
+              <div class="term-pane" data-pane="staff">
+                <div class="cmd-row"><span class="cmd-name">!close</span><span class="cmd-desc">closes the ticket and sends transcripts</span></div>
+                <div class="cmd-row"><span class="cmd-name">!dm <em>@user reason</em></span><span class="cmd-desc">sends a clean ticket notification DM</span></div>
+                <div class="cmd-row"><span class="cmd-name">!partnership desc</span><span class="cmd-desc">posts the full partnership message</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section footer-cta-section" id="partners">
+        <div class="wrap footer-grid">
+          <div>
+            <p class="eyebrow">for serious communities</p>
+            <h2>Give your marketplace a safer trade layer.</h2>
+            <p>
+              eqy helps communities keep trades inside documented tickets, with
+              visible proof and staff-controlled resolutions.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn-primary" href="https://discord.gg/ezhweJxe3q">Request partnership -></a>
+            <a class="btn-ghost" href="#commands">Read commands</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-meta">
+        <span>eqy · Discord PayPal escrow bot</span>
+        <span>Manual PayPal workflow. Always follow platform terms and local obligations.</span>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
